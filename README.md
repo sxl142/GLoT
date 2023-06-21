@@ -1,4 +1,4 @@
-# GLoT: Global-to-Local Modeling for Video-based 3D Human Pose and Shape Estimation
+# GLoT: Global-to-Local Modeling for Video-based 3D Human Pose and Shape Estimation (CVPR2023)
 
 ## Introduction
 This repository is the official [Pytorch](https://pytorch.org/) implementation of [Global-to-Local Modeling for Video-based 3D Human Pose and Shape Estimation](https://openaccess.thecvf.com/content/CVPR2023/papers/Shen_Global-to-Local_Modeling_for_Video-Based_3D_Human_Pose_and_Shape_Estimation_CVPR_2023_paper.pdf). 
