@@ -1,0 +1,70 @@
+TITLE: 'repr_table6_3dpw_model'
+DEBUG: false
+DEBUG_FREQ: 5
+LOGDIR: ''
+DEVICE: 'cuda'
+EXP_NAME: 'table2_3dpw_exp'
+OUTPUT_DIR: '/home/shenxiaolong.sxl/exp_dir/experiments' # your path
+NUM_WORKERS: 16
+SEED_VALUE: 1
+DATASET:
+  SEQLEN: 16
+LOSS:
+  KP_2D_W: 100.0
+  KP_3D_W: 200.0
+  SHAPE_W: 0.06
+  POSE_W: 60.0
+  D_MOTION_LOSS_W: 0.0
+  vel_or_accel_2d_weight: 10.
+  vel_or_accel_3d_weight: 100.
+  use_accel: False
+TRAIN:
+  val_epoch: 20
+  BATCH_SIZE: 64
+  NUM_ITERS_PER_EPOCH: 500
+  PRETRAINED: './data/pretrained_models/table2_3dpw_weights.pth.tar' # for testing
+  PRETRAINED_REGRESSOR: '/home/shenxiaolong.sxl/remote_t1/data/base_data/spin_model_checkpoint.pth.tar' # your path
+  RESUME: ''
+  START_EPOCH: 0
+  END_EPOCH: 80
+  LR_PATIENCE: 8
+  DATA_2D_RATIO: 0.6
+  OVERLAP: 0.
+  DATASETS_2D:
+    - 'Insta'
+    # - 'PoseTrack'
+  DATASETS_3D:
+    - 'MPII3D'
+    - 'Human36M'
+  DATASET_EVAL: 'ThreeDPW'
+  GEN_LR: 0.0001
+  GEN_WD: 1.e-5
+  MOT_DISCR:
+    OPTIM: 'Adam'
+    LR: 0.0001
+    WD: 0.0001
+    MOMENTUM: 0.9
+    HIDDEN_SIZE: 1024
+    NUM_LAYERS: 2
+    FEATURE_POOL: 'attention'
+    ATT:
+      LAYERS: 3
+      SIZE: 1024
+      DROPOUT: 0.2
+MODEL:
+  MODEL_NAME: GLoT
+  num_head: 8
+  dropout: 0.1
+  drop_path_r: 0.2
+  d_model: 512
+  n_layers: 2
+  atten_drop: 0.
+  mask_ratio: 0.5
+  short_n_layers: 3
+  short_d_model: 256
+  short_num_head: 8 
+  short_dropout: 0.1
+  short_drop_path_r: 0.2
+  short_atten_drop: 0. 
+  stride_short: 4 
+  drop_reg_short: 0.25
